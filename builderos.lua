@@ -10,7 +10,7 @@ if flag == "rn" then
 end
 
 local function help()
-  print("BuilderOS v5 @",os.getComputerID())
+  print("BuilderOS v5.1 @",os.getComputerID())
   print(" w - forward    | p - place")
   print(" a - turn left  | i - place up")
   print(" s - backward   | o - place down")
@@ -24,7 +24,9 @@ local function help()
 end
 
 local function refuel()
-  if t.getFuelLevel() <= 10 then
+  local fuelLevel = t.getFuelLevel()
+  if fuelLevel == "unlimited" then return nil end
+  if fuelLevel <= 10 then
     write("refuel ")
     for i=13,16 do
       t.select(i)
